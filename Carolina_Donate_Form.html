@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Donate - Emergency Action Fund</title>
+          <?php include ("header.php"); ?>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- adding link to my css file (Normalize css goes first-->
+        <link rel ="Stylesheet" type="text/css" href="css/Normalize.css">
+        <link rel ="Stylesheet" type="text/css" href="css/Carolina_Donate.css"> 
+    </head>
+       
+    <body>
+      
+             <!--   <img  id="LogoPhoto" src="LOGO.png" alt="The Unexpected"/> -->
+             <span id="ciao" class="hint"></span>
+            <form id="myform" onsubmit="return false">
+                          <div id="header">
+   
+             <!--Q2 Radio List type with single selection-->
+                <fieldset id="donate" onblur="ifMoney()" onclick="CLR()">
+           <h1> Emergency Action Fund</h1>
+           <h4> Thank you, for your contribution!</h4>
+           
+           <p>     <input class="money" id="50" type="radio" name="money" tabindex="1" value="50" onblur="ifMoney()" ><label for="50">$50</label>
+                    <input class="money" id="100" type="radio" name="money" tabindex="2" value="$100" onblur="ifMoney()"><label for="100">$100</label>                 
+                    <input class="money" id="500" type="radio" name="money" tabindex="3" value="500" onblur="ifMoney()"><label for="500">$500</label>
+                    <input class="money" id="1000" type="radio" name="money" tabindex="4" value="1000" onblur="ifMoney()"><label for="1000">$1000</label>
+                   
+                    <input  id="other" type="radio" name="money" tabindex="5" autofocus onblur="ifMoney()"> <label for="other">                       
+                    </label>
+                    <input type="text" name="money"  tabindex="6" size="7" placeholder=" Other" ><br>
+                    
+             <span id="hintMoney" class ="hint"></span><br> <!--adding error hint-->       
+            </p>              
+                </fieldset>
+                          </div> 
+                
+                
+                <hr>
+                
+                 <div id="aside">
+            <ul >
+               
+             
+                    <li>
+                        <img class="DisasterPhoto"  src="images/Donate_img1.jpg" alt="img1"/>                       
+                    </li>
+                    
+                    <li>
+                        <img class="DisasterPhoto" src="images/Donate_img2.jpg" alt="img2" />                        
+                    </li>
+                    
+                    <li>
+                        <img  class="DisasterPhoto" src="images/Donate_img3.jpg" alt="img3"/>
+                        
+                    </li>
+                    <li>
+                        <img class="DisasterPhoto" src="images/Donate_img4.jpg" alt="img4" />
+                       
+                    </li>
+                    <li>
+                        <img class="DisasterPhoto" src="images/Donate_img5.jpg" alt="img5" />
+                        
+                    </li>
+                    <li>
+                        <img class="DisasterPhoto" src="images/Donate_img6.jpg" alt="img6" />
+                        
+                    </li>
+                </ul>
+                </div>
+
+             <fieldset >
+                 <p> 
+                    
+                     <input id="ind" type="radio" name="donertype" value="individual" onblur="ifDonerType()" onclick="ifOrgDonerType()" > 
+                     <label for="ind">I am an Individual</label> <br>
+                     
+                     <input id="org" type="radio" name="donertype" value="organization" onblur="ifDonerType()" onclick="ifOrgDonerType()" >
+                     <label for="org">I represent an Organization</label> <br>
+                                         
+                    <input id="orgnametext" class="hidden" type="text" name="orgname"  placeholder="Enter Organization Name"> 
+                    <label for="orgnametext"></label>
+                    <span id="hintDonerType" class="hint"></span>
+                 </p>
+             </fieldset>
+                
+             
+                <hr>
+                
+             <fieldset>
+                 <p> <label for="fn"> First Name * </label><br>
+                     <input id="fn" type="text" name="firstname"  placeholder="Enter First Name" onfocus = "ifFirstName()" onblur="CLR()">
+                         <span id="hintFN" class ="hint"></span> <!--adding error hint--> <br>
+                         <label for="ln"> Last Name * </label> <br>
+                         <input  id="ln" type="text" name="lasttname"  placeholder="Enter Last Name" onfocus = "ifLastName()" onblur="CLR()">
+                     <span id="hintLN" class ="hint"></span><br> <!--adding error hint-->
+                 </p> <br>
+                 
+             </fieldset>
+                
+                <hr>
+                  
+                                       
+                 <fieldset>
+                     
+                     <p>Country * <span id="hintCTRY" class ="hint"></span><!--adding error hint--><br>
+                         <select id="ctry"  onblur = "ifCountry()" onfocus="CLR()"> 
+    <option value="" selected> -- Please select your Country --</option>
+    <option value="--"> -- Not available in the list --</option>
+    <option value="AF">Afghanistan</option>
+    <option value="AL">Albania</option>
+    <option value="DZ">Algeria</option>
+    <option value="AS">American Samoa</option>
+    <option value="AD">Andorra</option>
+    <option value="AO">Angola</option>
+    <option value="AI">Anguilla</option>
+    <option value="AQ">Antarctica</option>
+    <option value="AG">Antigua and Barbuda</option>
+    <option value="AR">Argentina</option>
+    <option value="AM">Armenia</option>
+    <option value="AW">Aruba</option>
+    <option value="AU">Australia</option>
+    <option value="AT">Austria</option>
+    <option value="AZ">Azerbaijan</option>
+    <option value="BS">Bahamas</option>
+    <option value="BH">Bahrain</option>
+    <option value="BD">Bangladesh</option>
+    <option value="BB">Barbados</option>
+    <option value="BY">Belarus</option>
+    <option value="BE">Belgium</option>
+    <option value="BZ">Belize</option>
+    <option value="BJ">Benin</option>
+    <option value="BM">Bermuda</option>
+    <option value="BT">Bhutan</option>
+    <option value="BO">Bolivia</option>
+    <option value="BA">Bosnia and Herzegowina</option>
+    <option value="BW">Botswana</option>
+    <option value="BV">Bouvet Island</option>
+    <option value="BR">Brazil</option>
+    <option value="IO">British Indian Ocean Territory</option>
+    <option value="BN">Brunei Darussalam</option>
+    <option value="BG">Bulgaria</option>
+    <option value="BF">Burkina Faso</option>
+    <option value="BI">Burundi</option>
+    <option value="KH">Cambodia</option>
+    <option value="CM">Cameroon</option>
+    <option value="CA">Canada</option>
+    <option value="CV">Cape Verde</option>
+    <option value="KY">Cayman Islands</option>
+    <option value="CF">Central African Republic</option>
+    <option value="TD">Chad</option>
+    <option value="CL">Chile</option>
+    <option value="CN">China</option>
+    <option value="CX">Christmas Island</option>
+    <option value="CC">Cocos (Keeling) Islands</option>
+    <option value="CO">Colombia</option>
+    <option value="KM">Comoros</option>
+    <option value="CG">Congo</option>
+    <option value="CD">Congo, the Democratic Republic of the</option>
+    <option value="CK">Cook Islands</option>
+    <option value="CR">Costa Rica</option>
+    <option value="CI">Cote d'Ivoire</option>
+    <option value="HR">Croatia (Hrvatska)</option>
+    <option value="CU">Cuba</option>
+    <option value="CY">Cyprus</option>
+    <option value="CZ">Czech Republic</option>
+    <option value="DK">Denmark</option>
+    <option value="DJ">Djibouti</option>
+    <option value="DM">Dominica</option>
+    <option value="DO">Dominican Republic</option>
+    <option value="TP">East Timor</option>
+    <option value="EC">Ecuador</option>
+    <option value="EG">Egypt</option>
+    <option value="SV">El Salvador</option>
+    <option value="GQ">Equatorial Guinea</option>
+    <option value="ER">Eritrea</option>
+    <option value="EE">Estonia</option>
+    <option value="ET">Ethiopia</option>
+    <option value="FK">Falkland Islands (Malvinas)</option>
+    <option value="FO">Faroe Islands</option>
+    <option value="FJ">Fiji</option>
+    <option value="FI">Finland</option>
+    <option value="FR">France</option>
+    <option value="FX">France, Metropolitan</option>
+    <option value="GF">French Guiana</option>
+    <option value="PF">French Polynesia</option>
+    <option value="TF">French Southern Territories</option>
+    <option value="GA">Gabon</option>
+    <option value="GM">Gambia</option>
+    <option value="GE">Georgia</option>
+    <option value="DE">Germany</option>
+    <option value="GH">Ghana</option>
+    <option value="GI">Gibraltar</option>
+    <option value="GR">Greece</option>
+    <option value="GL">Greenland</option>
+    <option value="GD">Grenada</option>
+    <option value="GP">Guadeloupe</option>
+    <option value="GU">Guam</option>
+    <option value="GT">Guatemala</option>
+    <option value="GN">Guinea</option>
+    <option value="GW">Guinea-Bissau</option>
+    <option value="GY">Guyana</option>
+    <option value="HT">Haiti</option>
+    <option value="HM">Heard and Mc Donald Islands</option>
+    <option value="VA">Holy See (Vatican City State)</option>
+    <option value="HN">Honduras</option>
+    <option value="HK">Hong Kong</option>
+    <option value="HU">Hungary</option>
+    <option value="IS">Iceland</option>
+    <option value="IN">India</option>
+    <option value="ID">Indonesia</option>
+    <option value="IR">Iran (Islamic Republic of)</option>
+    <option value="IQ">Iraq</option>
+    <option value="IE">Ireland</option>
+    <option value="IL">Israel</option>
+    <option value="IT">Italy</option>
+    <option value="JM">Jamaica</option>
+    <option value="JP">Japan</option>
+    <option value="JO">Jordan</option>
+    <option value="KZ">Kazakhstan</option>
+    <option value="KE">Kenya</option>
+    <option value="KI">Kiribati</option>
+    <option value="KP">Korea, Democratic People's Republic of</option>
+    <option value="KR">Korea, Republic of</option>
+    <option value="KW">Kuwait</option>
+    <option value="KG">Kyrgyzstan</option>
+    <option value="LA">Lao People's Democratic Republic</option>
+    <option value="LV">Latvia</option>
+    <option value="LB">Lebanon</option>
+    <option value="LS">Lesotho</option>
+    <option value="LR">Liberia</option>
+    <option value="LY">Libyan Arab Jamahiriya</option>
+    <option value="LI">Liechtenstein</option>
+    <option value="LT">Lithuania</option>
+    <option value="LU">Luxembourg</option>
+    <option value="MO">Macau</option>
+    <option value="MK">Macedonia, The Former Yugoslav Republic of</option>
+    <option value="MG">Madagascar</option>
+    <option value="MW">Malawi</option>
+    <option value="MY">Malaysia</option>
+    <option value="MV">Maldives</option>
+    <option value="ML">Mali</option>
+    <option value="MT">Malta</option>
+    <option value="MH">Marshall Islands</option>
+    <option value="MQ">Martinique</option>
+    <option value="MR">Mauritania</option>
+    <option value="MU">Mauritius</option>
+    <option value="YT">Mayotte</option>
+    <option value="MX">Mexico</option>
+    <option value="FM">Micronesia, Federated States of</option>
+    <option value="MD">Moldova, Republic of</option>
+    <option value="MC">Monaco</option>
+    <option value="MN">Mongolia</option>
+    <option value="MS">Montserrat</option>
+    <option value="MA">Morocco</option>
+    <option value="MZ">Mozambique</option>
+    <option value="MM">Myanmar</option>
+    <option value="NA">Namibia</option>
+    <option value="NR">Nauru</option>
+    <option value="NP">Nepal</option>
+    <option value="NL">Netherlands</option>
+    <option value="AN">Netherlands Antilles</option>
+    <option value="NC">New Caledonia</option>
+    <option value="NZ">New Zealand</option>
+    <option value="NI">Nicaragua</option>
+    <option value="NE">Niger</option>
+    <option value="NG">Nigeria</option>
+    <option value="NU">Niue</option>
+    <option value="NF">Norfolk Island</option>
+    <option value="MP">Northern Mariana Islands</option>
+    <option value="NO">Norway</option>
+    <option value="OM">Oman</option>
+    <option value="PK">Pakistan</option>
+    <option value="PW">Palau</option>
+    <option value="PA">Panama</option>
+    <option value="PG">Papua New Guinea</option>
+    <option value="PY">Paraguay</option>
+    <option value="PE">Peru</option>
+    <option value="PH">Philippines</option>
+    <option value="PN">Pitcairn</option>
+    <option value="PL">Poland</option>
+    <option value="PT">Portugal</option>
+    <option value="PR">Puerto Rico</option>
+    <option value="QA">Qatar</option>
+    <option value="RE">Reunion</option>
+    <option value="RO">Romania</option>
+    <option value="RU">Russian Federation</option>
+    <option value="RW">Rwanda</option>
+    <option value="KN">Saint Kitts and Nevis</option> 
+    <option value="LC">Saint LUCIA</option>
+    <option value="VC">Saint Vincent and the Grenadines</option>
+    <option value="WS">Samoa</option>
+    <option value="SM">San Marino</option>
+    <option value="ST">Sao Tome and Principe</option> 
+    <option value="SA">Saudi Arabia</option>
+    <option value="SN">Senegal</option>
+    <option value="SC">Seychelles</option>
+    <option value="SL">Sierra Leone</option>
+    <option value="SG">Singapore</option>
+    <option value="SK">Slovakia (Slovak Republic)</option>
+    <option value="SI">Slovenia</option>
+    <option value="SB">Solomon Islands</option>
+    <option value="SO">Somalia</option>
+    <option value="ZA">South Africa</option>
+    <option value="GS">South Georgia and the South Sandwich Islands</option>
+    <option value="ES">Spain</option>
+    <option value="LK">Sri Lanka</option>
+    <option value="SH">St. Helena</option>
+    <option value="PM">St. Pierre and Miquelon</option>
+    <option value="SD">Sudan</option>
+    <option value="SR">Suriname</option>
+    <option value="SJ">Svalbard and Jan Mayen Islands</option>
+    <option value="SZ">Swaziland</option>
+    <option value="SE">Sweden</option>
+    <option value="CH">Switzerland</option>
+    <option value="SY">Syrian Arab Republic</option>
+    <option value="TW">Taiwan, Province of China</option>
+    <option value="TJ">Tajikistan</option>
+    <option value="TZ">Tanzania, United Republic of</option>
+    <option value="TH">Thailand</option>
+    <option value="TG">Togo</option>
+    <option value="TK">Tokelau</option>
+    <option value="TO">Tonga</option>
+    <option value="TT">Trinidad and Tobago</option>
+    <option value="TN">Tunisia</option>
+    <option value="TR">Turkey</option>
+    <option value="TM">Turkmenistan</option>
+    <option value="TC">Turks and Caicos Islands</option>
+    <option value="TV">Tuvalu</option>
+    <option value="UG">Uganda</option>
+    <option value="UA">Ukraine</option>
+    <option value="AE">United Arab Emirates</option>
+    <option value="GB">United Kingdom</option>
+    <option value="US">United States</option>
+    <option value="UM">United States Minor Outlying Islands</option>
+    <option value="UY">Uruguay</option>
+    <option value="UZ">Uzbekistan</option>
+    <option value="VU">Vanuatu</option>
+    <option value="VE">Venezuela</option>
+    <option value="VN">Viet Nam</option>
+    <option value="VG">Virgin Islands (British)</option>
+    <option value="VI">Virgin Islands (U.S.)</option>
+    <option value="WF">Wallis and Futuna Islands</option>
+    <option value="EH">Western Sahara</option>
+    <option value="YE">Yemen</option>
+    <option value="YU">Yugoslavia</option>
+    <option value="ZM">Zambia</option>
+    <option value="ZW">Zimbabwe</option>
+                     </select> 
+                           
+                     </p>
+                     
+                     
+                     </fieldset>
+                  
+                <fieldset>
+                    <label for="ad1"> Street Address * </label><br>
+                    <input  id="ad1" class="ad1" type="text" name="address1"  placeholder="Enter Address" onfocus = "ifAddress1()" onblur="CLR()">
+                      <span id="hintAD1" class ="hint"></span> <!--adding error hint--> <br>
+                     
+                    <label for="ad2"> Street Address (Line 2)</label><br>
+                      <input id="ad2" class="ad2" type="text" name="address2">                       
+                    <span id="hintAD2" class ="hint"></span><!--adding error hint--><br>
+                  
+                  <label for="ct"> City * </label><br>
+                    <input  id="ct" class="city" type="text" name="city"  placeholder="Enter City" onfocus = "ifCity()" onblur="CLR()">
+                        <span id="hintCT" class ="hint"></span><!--adding error hint--> <br>
+                        
+                        <label for="st"> State (*USA only) </label><br>
+                    <input id="st" class="state" type="text" name="state"  placeholder="Enter State" onfocus = "ifState()" onblur="CLR()">
+                    <span id="hintST" class ="hint"></span> <!--adding error hint--><br>
+                </fieldset><br>
+                 
+                <hr>  
+                 
+                <fieldset>
+                    <p> <label for="em1"> Email Address * </label> <br>
+                        <input id="em1" type="email" name="email1"  placeholder="Type email address here" onblur="ifEmail()"><br>
+                     
+                        <span id="hintEM" class ="hint"></span><br> <!--adding error hint-->
+                        
+                        <label for="em2"> Re-Type Email Address * </label><br>
+                        <input id="em2" type="email" name="email2"  placeholder="Re-type email address here" onclick="ifEmail()" onblur="emailEquality()" ><br>
+                                             
+                         <span id="hintEM2" class ="hint"></span> <!--adding error hint--> </p> <br>
+             </fieldset>
+                 
+                <fieldset>
+                    <label> Best Number to reach You<br>
+                         <input  type="tel" name="tel"  placeholder="xxx-xxx-xxxx" > (Enter if ok for our team to contact you)
+                     </label><br>
+                </fieldset>
+            
+                <hr>
+                
+                <fieldset onblur="ifPaymentMethod()" >
+                    <span id="hintPYM" class ="hint" ></span><br> <!--adding error hint-->
+                    <h1>Donation Method </h1><br>
+                        
+                         
+                 <input id="cc" type="radio" name="method" value="credit" onclick="ifPaymentType()" > 
+                             Credit Card <br>
+                 <input id="ch" type="radio" name="method" value="check" onclick="ifPaymentType()" > 
+                     Check Account<br>
+                     
+                 
+                </fieldset><br>
+                   
+                 <hr>
+                 <p>
+                 <span id="hintCH" class ="hint"></span><br> <!--adding error hint-->
+                 </p>
+                 <fieldset id="CCfields" class="hidden">     
+                      <span id="hintCC" class ="hint"></span><br> <!--adding error hint-->
+                      
+                     <h3>Card Type:</h3>
+              
+                        <input id=visa name=cardtype type=radio />
+                        <label for=visa>Visa</label>
+                   
+                        <input id=amex name=cardtype type=radio />
+                        <label for=amex>American Express</label>
+                    
+                        <input id=mastercard name=cardtype type=radio />
+                        <label for=mastercard>MasterCard</label>
+                     
+                  
+                     <p>
+                         <label for=namecard>Name on Card</label> <br>
+                         <input id=namecard name=namecard type="text" placeholder="Name on the card" /><br>
+                
+                         <label for=cardnumber>Card Number</label> <br>
+                         <input id=cardnumber name=cardnumber type="text"  /><br>
+           
+                         <label for=secure>Security Code</label><br>
+                         <input id=secure name=secure type="text"  />
+                     </p>
+                         
+            
+                     <p>
+                         Expiration Date: <br>
+                <SELECT NAME="CCExpiresMonth" >
+        <OPTION VALUE="" SELECTED>--Month--
+        <OPTION VALUE="01">January (01)
+        <OPTION VALUE="02">February (02)
+        <OPTION VALUE="03">March (03)
+        <OPTION VALUE="04">April (04)
+        <OPTION VALUE="05">May (05)
+        <OPTION VALUE="06">June (06)
+        <OPTION VALUE="07">July (07)
+        <OPTION VALUE="08">August (08)
+        <OPTION VALUE="09">September (09)
+        <OPTION VALUE="10">October (10)
+        <OPTION VALUE="11">November (11)
+        <OPTION VALUE="12">December (12)
+      </SELECT> /
+      
+      <SELECT NAME="CCExpiresYear">
+        <OPTION VALUE="" SELECTED>--Year--
+        <OPTION VALUE="15">2015
+        <OPTION VALUE="16">2016
+        <OPTION VALUE="17">2017
+        <OPTION VALUE="18">2018
+        <OPTION VALUE="19">2019
+        <OPTION VALUE="20">2020
+        <OPTION VALUE="21">2021
+        <OPTION VALUE="22">2022
+        <OPTION VALUE="23">2023
+        <OPTION VALUE="24">2024
+        <OPTION VALUE="25">2025
+        <OPTION VALUE="26">2026
+        <OPTION VALUE="27">2027
+      </SELECT>
+                </p>
+                </fieldset>
+                 
+              
+                
+                 <fieldset id="CHfields" class="hidden">
+                     <h3>Checking Account Information:</h3>
+                     <label for=checking>Type your Account number</label><br>
+                     <input id="checking" type="text" name="checking"  placeholder="Your Account number" > <br>
+                     <label for=checking2>Confirm Account number</label><br>
+                     <input id="checking2" type="text" name="checking2"  placeholder="Please Re-enter"><br> 
+                     <label for=routing>Type your Routing number</label><br>
+                     <input id="routing" type="text" name="routing"  placeholder="Your Routing number" > <br>
+                     <label for=routing2>Confirm Routing number</label><br>
+                     <input id="routing2" type="text" name="routing2"  placeholder="Please Re-enter"><br> 
+                     <label for=namecard>Name on Card</label><br>
+                    <input id=Ncard name=namecard type="text" placeholder="Name on card"  
+                      title="Enter the name as it shows on the card">
+                    
+                     
+                 </fieldset>
+                    
+                 <p>
+                 <input class="btn" type="submit" name="submit" id="submit" value="Submit Payment" onclick="validateALL()">
+                 <input class="btn" type="reset" name="reset" id="reset" value="Clear fields and start over" onclick = "CLR()">
+                 
+                 </p>
+                 <a href="Carolina_Home.html" id="Backtohome"> I Changed My Mind - Back to Home Page</a>
+            
+        </form>
+        
+       <!-- adding link to my JavaScript file-->
+        <script type="text/javascript" src="scripts/Carolina_Donate_FormValidator.js"></script> 
+        
+    </body>
+</html>
