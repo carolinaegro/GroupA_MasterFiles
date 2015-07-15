@@ -30,9 +30,10 @@
                 <li> <a href="Carolina_Home.html">Home</a></li>
                 <li> <a href="Chris_About.php">About</a></li>
                 <li> <a href="Tim_Form.php">Report It</a></li>
-                <li> <a href="Tor_Map.html">Current Events</a>
+                <!-- point to Tor_Map.php 15 July 2015 -->
+                <li> <a href="Tor_Map.php">Current Events</a>
                     <ul> 
-                        <li><a href="Tor_Map.html">View Map</a></li>
+                        <li><a href="Tor_Map.php">View Map</a></li>
                         <li><a href="Under_Construction.php">View Graphs</a></li>
                     </ul>
                 </li>

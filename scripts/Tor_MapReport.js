@@ -195,39 +195,50 @@ function loadEvents(){
     httpRequest.open("GET", "Tor_LoadDefaultEvent.php", true);
 
     // 3- Specify call back function
-    httpRequest.onreadystatechange = function () {
-
-       
-        if(httpRequest.readyState===4){
-                
-            var JSonData = JSON.parse(httpRequest.responseText);
-
-             for(var i = 0; i < JSonData.length; i++) 
-             {
-
-                    //Create report object from JSON data and push to report array
-                    var gps = JSonData[i].gps_position.split(",");
-                    var reporttemp = new report();
-                    reporttemp.pos = new google.maps.LatLng(gps[0],gps[1]);
-                    reporttemp.type= JSonData[i].event_type;
-                    //reporttemp.subtype = JSonData[i].event_subtype;
-                    reporttemp.time= JSonData[i].event_date;
-                    //reporttemp.KnownFatalities= JSonData[i].no_fatal;
-                    //reporttemp.KnownCasualties= JSonData[i].no_casual;
-                    reporttemp.SituationDescription=JSonData[i].event_des;
-
-                    //Push to container
-                    reports.push(reporttemp);
-              }
-              drawMap();
-        }
-    };
+    httpRequest.onreadystatechange =processAJAXResponse;
 
     //4- Send HTTP Request
     httpRequest.send();
 
 }
 
+function processAJAXResponse()
+{   
+     //"this" is object that call this method that is XMLHTTPRequest
+     if(this.readyState===4){
+           
+            // reset All maps related data before query. If query return nothing, no markers are shown in map
+            resetMaps();
+            
+          try{
+                var JSonData = JSON.parse(this.responseText);
+               
+                for(var i = 0; i < JSonData.length; i++) 
+                {
+
+                       //Create report object from JSON data and push to report array
+                       var gps = JSonData[i].gps_position.split(",");
+                       var reporttemp = new report();
+                       reporttemp.pos = new google.maps.LatLng(gps[0],gps[1]);
+                       reporttemp.type= JSonData[i].event_type;
+                       //reporttemp.subtype = JSonData[i].event_subtype;
+                       reporttemp.time= JSonData[i].event_date;
+                       //reporttemp.KnownFatalities= JSonData[i].no_fatal;
+                       //reporttemp.KnownCasualties= JSonData[i].no_casual;
+                       reporttemp.SituationDescription=JSonData[i].event_des;
+
+                       //Push to container
+                       reports.push(reporttemp);
+                 }
+                 drawMap();
+           }catch(e)
+           {    // PHP return "No record  matched" if no record match which cause parse exception.
+               // Then just print it on screen
+                showError(this.responseText);
+           }
+           
+        }
+}
 function getInfoWindow(report){
     
 //     var contentString =   '<h3>'+report.type+'</h3>'+
@@ -353,33 +364,7 @@ function processFilter(){
     httpRequest.open("GET", "Tor_EventQuery.php?"+parameter, true);
 
     // 3- Specify call back function
-    httpRequest.onreadystatechange = function () {
-
-        if(httpRequest.readyState===4){
-                
-            var JSonData = JSON.parse(httpRequest.responseText);
-            // reset All maps related data
-            resetMaps();
-             for(var i = 0; i < JSonData.length; i++) 
-             {
-
-                    //Create report object from JSON data and push to report array
-                    var gps = JSonData[i].gps_position.split(",");
-                    var reporttemp = new report();
-                    reporttemp.pos = new google.maps.LatLng(gps[0],gps[1]);
-                    reporttemp.type= JSonData[i].event_type;
-                    //reporttemp.subtype = JSonData[i].event_subtype;
-                    reporttemp.time= JSonData[i].event_date;
-                    //reporttemp.KnownFatalities= JSonData[i].no_fatal;
-                    //reporttemp.KnownCasualties= JSonData[i].no_casual;
-                    reporttemp.SituationDescription=JSonData[i].event_des;
-
-                    //Push to container
-                    reports.push(reporttemp);
-              }
-              drawMap();
-        }
-    };
+    httpRequest.onreadystatechange = processAJAXResponse;
 
     //4- Send HTTP Request
     

@@ -84,6 +84,7 @@ if(strlen($searchTxt)>0)
 if(strlen($eventTypeList)>0)
 {
     // Each event type need its own ? , so, a no of "?" is equal to a no of event
+    // http://stackoverflow.com/questions/2373562/pdo-with-where-in-queries
     $qmofevent = str_repeat("?,", count($eventTypearr)-1) . "?";
  
     array_push($condition,"Event_Type in ($qmofevent)");
@@ -158,8 +159,9 @@ if($totalrow > 0)
 
 }else
 {
-    //If query result return nothing
-    print "nothing returned <br>";
+    //Week 07: If nothing returned , response with reason and this msg is shown on screen
+    print "No record  matched";
+    
 
 }
 

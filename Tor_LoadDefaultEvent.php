@@ -73,9 +73,9 @@ if($totalrow > 0)
 
 }else
 {
-    //If query result return nothing
-    print "nothing returned <br>";
-
+    //Week 07: If nothing returned , response with reason and this msg is shown on screen
+     print "No record  matched";
+    
 }
 
 //Close DB
