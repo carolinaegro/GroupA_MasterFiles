@@ -65,10 +65,10 @@
                             with a source of data which will help them co-ordinate relief efforts. </p></li>
                     
                     <li><strong>Donations:</strong> If you would like to donate money to this project, 
-                        <p> please Donate using <strong> <a href="Carolina_Donate_Form.html"> the DONATE link.</a></strong></p></li>
+                        <p> please contact us using <strong> <a href="Chris_Contact.html"> the Contact us link.</a></strong></p></li>
                         
                     <li><strong>Data Access:</strong> If you would like to access the raw data created by this project, 
-                        <p>please contact us using this link <strong> <a href="Chris_Contacts.php"> the Contact us link.</a></strong></p></li>
+                        <p>please contact us using this link <strong> <a href="Chris_Contact.html"> the Contact us link.</a></strong></p></li>
                     
                     <li> <strong>Data Privacy:</strong> We will not publish the contact details that you provide, 
                         <p>unless you give us your explicit permission to do so, and even then, 
@@ -93,11 +93,9 @@
             
             <!--Carolina: replacing "section" with "footer"-->
             <footer class="donate">
-               <input type="button" class="button"  value="Donate" onclick="window.location='Carolina_Donate_Form.html'">
-               <input type="button" class="button"  value="Contact us" onclick="window.location='Chris_Contacts.php'">
-                
-            
-            </footer>
+                <button class="button">Donate</button>
+                <button class="button">Contact us</button>
+           </footer>
         </div>
     </body>
     <script src="chris_interaction.js"></script>
