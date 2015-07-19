@@ -62,8 +62,8 @@ function dropPin(event) {
 
 function updatePos(){
     
-    var pinPos ="Position : "+ marker.getPosition().lat()+","+marker.getPosition().lng();
-    document.getElementById('pinPos').innerHTML = pinPos;
+    var pinPos =marker.getPosition().lat()+","+marker.getPosition().lng();
+    document.getElementById('pinPos').value = pinPos;
 }
 
 

@@ -3,13 +3,14 @@
 <!-- Tim Haines, This is the submission page for the Team 1 website. -->
 <html>
    <head>
-      
+      <meta charset = "utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Submit Information</title>
-      
-        <?php include ("header.php"); ?>
-      
+      <?php include ("header.php"); ?>
+      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
       <script type = "text/javascript" src="scripts/Tim_Form.js"></script>
-      
+      <script type = "text/javascript" src="scripts/Tor_DropPin.js"></script>
+       
       <link type="text/css" rel="stylesheet" href="css/tim_form.css">      
 
    </head>
@@ -276,17 +277,14 @@
         <h1>Submit Your Data Here</h1>
             <p><i>Please submit your data using the form below. If there is no appropriate
             entry for the information that you wish to record, please select 'other'.</i></p>
+            <form name="Event_Report" method="post" action = "#" id="myForm" onsubmit="validateForm()"> 
+            <!-- I don't think I need any of this (have simplified the form to make it more workable), but leaving it in j.i.c.                
+            <input type = "hidden" name = "recipient"
+            value = "timhaines@hotmail.com">
+            <input type = "hidden" name = "subject" 
+            value = "Data Form Submission"> -->
 
-           <form id=PartOne method="post" action = "http://www.madeup.com"> 
-            <!-- Made up value,for the time being.-->
-                <input type = "hidden" name = "recipient"
-                value = "timhaines@hotmail.com">
-                <input type = "hidden" name = "subject" 
-                value = "Data Form Submission">
-                <!-- Need to find a way of accessing the smart-phone's location information
-            and submitting it as a (?) hidden action?-->
-
-          <fieldset>
+         <!-- <fieldset>
                 <legend class="relegend">Please provide a description of where you are reporting this 
               incident from:</legend><br>
          <p><label> Country:
@@ -312,7 +310,7 @@
             <!-- The logic of this question is that if the answer is 'yes', then
             the location of the user's iphone can be used as the location of the
             incident on the map. Additionally, if 'Yes' we should direct them to
-            the section of the site on safety advice.-->
+            the section of the site on safety advice.
             </fieldset>
             <br>
           <fieldset>
@@ -320,7 +318,7 @@
 
                <p>
             Select from the following drop-down menu:<br>
-                <!-- Drop down selection-->
+                <!-- Drop down selection
                <select name = "howiknow">
                   <option>I saw it happen</option>
                   <option>I saw it after it happened</option>
@@ -331,46 +329,25 @@
                   <option>Other</option>
             <!-- When we make this interactive, I would like the last three options
             to prompt the form-filler to state which site they found the info from
-            or say what the source was if it was 'other'.-->
+            or say what the source was if it was 'other'.
                </select>
           </fieldset>    
             <br> 
             
             <button class="button" type="submit" value="Submit">Submit</button>
-            <button class="button" type="reset" value="Reset">Reset</button>  
+            <button class="button" type="reset" value="Reset">Reset</button>  -->
             
             <br>
             
-          <fieldset>
-              <p> If you are willing to be contacted by an aid agency to provide further
-                  details, please click on the button below to submit details. </p>
-             <button class="button" type="button" onclick="appear()">Provide Details</button>
-            <div id="contactdetails" style ="display:none">
-            <p><label>What is your name?: 
-            <input name = "submittingname" type = "text"  size = "25">
-         </label></p>           
-            What is the best way to contact you?
-               <select name = "howtocontact">
-                  <option>Email</option>
-                  <option>Text</option>
-                  <option>Phone</option>
-                  <option>Skype</option>
-                  <option>Other</option>
-               </select>
-         <br>
-         <br>
          
-         <p>Please provide your contact details here.</p>
-         <textarea id = "condets" name = "contactdetails"
-                   rows = "3" cols = "60">Enter text here.</textarea>
-         <br>
          
-         <button class="button" type="button" value="submit" onclick="validatenotnull();" >Submit contact details</button>
-         <button class="button" type="reset" value="Submit">Reset</button>  
+         <!--<button class="button" type="button" value="submit" onclick="validatenotnull();" >Submit contact details</button>
+         <button class="button" type="reset" value="Submit">Reset</button> 
             </div>
           </fieldset>  
           <br> 
-          <fieldset>
+          <fieldset> -->
+         
               <legend class="relegend">Event Details: </legend>
          <h3> When did the event occur? </h3>
          
@@ -382,18 +359,24 @@
              not supported by all browsers. In 'real life' I would get around this
              by using a code library.-->
           <h3>Please provide a description of where this incident occurred:</h3><br>
-         <label>Tick box if you less than 2km from the location of the incident
+        <!-- <label>Tick box if you less than 2km from the location of the incident
              <input name = "LocationNear" type = "radio"
                   value = "Yes"></label>
          <p> Ticking this box will set the location of the event to the current
          location of your smartphone. If you are able to provide a more accurate
-         location by (insert method here) then please do so.</p>
+         location by (insert method here) then please do so.</p> -->
          
-         <p> To submit the location of the incident by selecting
+         <p> <!--To submit the location of the incident by selecting
              a point on a map click <a href="http://laureatestudentserver.com/IN137/sutthipongl/maptest2/html5geolocationtest.html">here </a></p>
-            <!-- As discussed with Tor, it would be better to have the map appear on
+             As discussed with Tor, it would be better to have the map appear on
             this page - we plan to implement that next week - this is a a stop gap
             solution.-->
+             
+              <label>Location: 
+            <input class="input-block" name = "eventposition" id="pinPos" type = "text"  size = "70">
+         </label>
+          <div id="map-canvas" style="height: 700px;"></div>
+     
          <br>
 
           <p><label>Country: 
@@ -410,8 +393,8 @@
          </label></p>
          <p>Please provide any further information here which
              would assist relief agencies in locating this incident.</p>
-         <textarea name = "eventloccomments"
-                   rows = "3" cols = "60">Enter text here.</textarea>
+         <textarea name = "eventloccomments" placeholder ="enter text here"
+                   rows = "3" cols = "60"></textarea>
          <br>
          <br>
          <h3> What Happened? </h3>
@@ -480,18 +463,44 @@
                   <p>Please provide as much detail as you can concerning the nature of the
              event.</p>
          <textarea name = "comments"
-                   rows = "3" cols = "60">Enter text here.</textarea><br>
+                   rows = "3" cols = "60" placeholder ="enter text here"></textarea><br>
          </fieldset>  
          <br>  
         <!-- The ability to upload photos here would be vv good, but is
         beyond my technical capabilities in the time available. Maybe later in the
         project?-->
-
-            <button class="button" type="submit" value="Submit">Submit</button>
+        
+         <fieldset>
+              <p> If you are willing to be contacted by an aid agency to provide further
+                  details, please click on the button below to submit details. </p>
+             <button class="button" id="provide" type="button" onClick="appear()">Contact Details</button>
+             <input type="hidden" id="detail" value="0">
+            <div id="contactdetails" style ="display:none">
+            <p><label>What is your name?: 
+            <input name = "submittingname" type = "text"  size = "25" id="submittingname">
+         </label></p>           
+            What is the best way to contact you?
+               <select name = "howtocontact">
+                  <option>Email</option>
+                  <option>Text</option>
+                  <option>Phone</option>
+                  <option>Skype</option>
+                  <option>Other</option>
+               </select>
+         <br>
+         <br>
+        
+         <p>Please provide your contact details here.</p>
+         <textarea id = "condets" name = "condets" placeholder ="enter text here"
+                   rows = "3" cols = "60"></textarea>
+        </div>
+           <input class="button" type ="submit" name="btnAddEvent" value="Submit"/>
+           <!-- <button class="button" type="button" value="submit" onclick="validatenotnull();" >Submit</button> -->
             <button class="button" type="reset" value="Reset">Reset</button>  
       </form>
 
    </section>
    </body>
 </html>
+
 
