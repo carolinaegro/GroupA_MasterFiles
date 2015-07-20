@@ -5,13 +5,34 @@ function initialize() {
 
     // Use HTML5 Geolocation to find user location.
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition,PositionError);
     } else {
         //document.getElementById('map-canvas').innerHTML = "Geolocation is not supported by this browser."; 
         showPosition();  
     }
  
 }
+
+function PositionError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+           document.getElementById('map-canvas').innerHTML="User denied the request for Geolocation.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            document.getElementById('map-canvas').innerHTML="Location information is unavailable.";
+           
+            break;
+        case error.TIMEOUT:
+            document.getElementById('map-canvas').innerHTML="The request to get user location timed out.";
+            break;
+        case error.UNKNOWN_ERROR:
+            document.getElementById('map-canvas').innerHTML="An unknown error occurred.";
+            break;
+    }    
+     // Use default location
+      showPosition();
+}
+
 
 function showPosition(position) {
 
